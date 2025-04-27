@@ -1,0 +1,10 @@
+class Urls:
+    BASE_URL = 'https://stellarburgers.nomoreparties.site/'
+    LOGIN_URL = 'login'
+    RECOVERY_PASSWORD_URL = 'forgot-password'
+    RESET_PASSWORD_URL = 'reset-password'
+    AUTH_URL = 'api/auth/register'
+    DELETE_USER_URL = 'api/auth/user'
+    ORDER_HISTORY_URL = 'account/order-history'
+    PROFILE_URL = 'account'
+    ORDER_FEED_URL = 'feed'
