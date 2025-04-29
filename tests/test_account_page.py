@@ -6,6 +6,7 @@ from conftest import user_login
 from pages.account_page import AccountPage
 
 
+@allure.feature('Личный кабинет')
 class TestsAccountPage:
 
     @allure.title('переход по клику на «Личный кабинет»')

@@ -4,6 +4,7 @@ from locators.login_page_locators import Locators
 import allure
 from pages.login_page import LoginPage
 
+
 class TestsLoginPage:
     @allure.title('переход на страницу восстановления пароля по кнопке «Восстановить пароль»')
     def test_reset_login_button(self, driver):

@@ -3,12 +3,10 @@ from locators.main_page_locators import Locators
 from constants import Constants
 from selenium.webdriver.common.by import By
 from helpers import Helpers
-
 import allure
-
 from pages.main_page import MainPage
-
 from conftest import user_login
+
 
 class TestsMainPage:
     @allure.title('переход по клику на «Конструктор»')
@@ -59,4 +57,4 @@ class TestsMainPage:
         main_page.click_element(Locators.ORDERS)
         helpers = Helpers(driver)
         order_id = helpers.get_order_id(access_token=user_login[2])
-        assert main_page.find_element(locator=(By.XPATH, f"//ul[@class = 'OrderFeed_orderListReady__1YFem OrderFeed_orderList__cBvyi']/ *[text() = '{order_id}']"))
+        assert main_page.find_order_by_id(order_id).is_displayed()

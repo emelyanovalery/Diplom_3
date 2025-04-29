@@ -1,19 +1,33 @@
-
 import pytest
 from selenium import webdriver
-
 from constants import Constants
 from faker import Faker
 import requests
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+
 
 @pytest.fixture(params=['chrome', 'firefox'])
 def driver(request):
+    browser = None
+
     if request.param == 'firefox':
-        browser = webdriver.Firefox()
+        options = FirefoxOptions()
+        options.set_preference("signon.rememberSignons", False)  # отключает сохранение паролей
+        options.set_preference("credentials_enable_service", False)
+        browser = webdriver.Firefox(options=options)
+
     elif request.param == 'chrome':
-        browser = webdriver.Chrome()
+        options = ChromeOptions()
+        options.add_experimental_option("prefs", {
+            "credentials_enable_service": False,  # отключает службу учётных данных
+            "profile.password_manager_enabled": False  # отключает менеджер паролей
+        })
+        browser = webdriver.Chrome(options=options)
+
     else:
         raise ValueError('Unknown browser type')
+
     yield browser
     browser.quit()
 

@@ -1,17 +1,13 @@
 import time
-
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
-
-
 from conftest import driver
-
 import allure
 from selenium import webdriver
+
 
 class BasePage:
     def __init__(self, driver: WebDriver):
